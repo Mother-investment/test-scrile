@@ -1,0 +1,59 @@
+.Form {
+	background-color: var(--form-background);
+	width: 580px;
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	padding: 25px;
+}
+
+.input {
+	margin-top: 12px;
+}
+
+.productType {
+	margin-top: 12px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	&__select {
+		width: 270px;
+	}
+}
+
+.additionalFeatures {
+	margin: 15px 0;
+}
+
+.feature {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	&__text {
+		letter-spacing: 0.5px;
+	}
+}
+
+.feature + .feature {
+	margin-top: 15px;
+}
+
+.totalPrice {
+	margin: 20px 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.submit {
+	display: flex;
+	justify-content: center;
+}
+
+.closeModal {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+}

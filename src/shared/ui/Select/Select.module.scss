@@ -1,0 +1,63 @@
+.Select {
+	position: relative;
+	background-color: var(--select-background);
+	border: 2px solid var(--border);
+	border-radius: var(--r-input);
+	color: var(--select-text);
+	font-size: var(--fs-select);
+}
+
+.selectOpened {
+	border: 2px solid var(--active-border);
+}
+
+.control {
+	cursor: pointer;
+	display: flex;
+	padding: 6px 14px;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
+
+.arrowContainer {
+	display: flex;
+	align-items: center;
+}
+
+.arrow {
+	transform: rotate(90deg);
+	fill: var(--select-icon);
+}
+
+.arrowActive {
+	transform: rotate(270deg);
+}
+
+.options {
+	border: 1px solid var(--border);
+	position: absolute;
+	top: 32px;
+	width: 100%;
+	background-color: var(--select-options-background);
+	z-index: var(--z-select-options);
+}
+
+.option {
+	cursor: pointer;
+	padding: 6px 14px;
+}
+
+.option + .option {
+	border-top: 1px solid var(--border) ;
+}
+
+.option:hover {
+	background-color: var(--select-hover-options-background);
+}
+
+.input, .textarea {
+	padding: 20px 14px 6px 14px;
+	width: 100%;
+	outline: none;
+}

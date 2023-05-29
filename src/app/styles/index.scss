@@ -1,0 +1,10 @@
+@import 'reset';
+@import 'font';
+@import 'variables/colors';
+@import 'variables/radius';
+@import 'variables/zIndexes';
+
+.app {
+	background: var(--app-background);
+	min-height: 100vh;
+}
