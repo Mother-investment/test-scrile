@@ -16,13 +16,15 @@ type InputProps = HTMLInputProps & {
 	disable?: boolean
 	placeholder?: string
 	error?: boolean
+	clearError?: (value: string) => void
 }
 
 export const Input = memo((props: InputProps) => {
-	const { className, type = 'input',value, onChange, onClick, disable, placeholder, error, ...otherProps } = props
+	const { className, type = 'input',value, onChange, onClick, disable, placeholder, error, clearError, ...otherProps } = props
 
 	const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
 		onChange(e.target.value)
+		clearError?.('')
 	}
 
 	const mods: Mods = {

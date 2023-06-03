@@ -116,6 +116,7 @@ export const Form = (props: FormProps) => {
 				value={firstName}
 				onChange={setFirstName}
 				error={!!errorFirstName}
+				clearError={setErrorFirstName}
 			/>
 			<p className={cls.errorMessage}>{errorFirstName}</p>
 
@@ -125,6 +126,7 @@ export const Form = (props: FormProps) => {
 				value={lastName}
 				onChange={setLastName}
 				error={!!errorLastName}
+				clearError={setErrorLastName}
 			/>
 			<p className={cls.errorMessage}>{errorLastName}</p>
 
@@ -134,6 +136,7 @@ export const Form = (props: FormProps) => {
 				value={email}
 				onChange={setEmail}
 				error={!!errorEmail}
+				clearError={setErrorEmail}
 			/>
 			<p className={cls.errorMessage}>{errorEmail}</p>
 
@@ -147,6 +150,7 @@ export const Form = (props: FormProps) => {
 						value={productType}
 						placeholder='Select product type'
 						error={!!errorProductType}
+						clearError={setErrorProductType}
 					/>
 					<p className={cls.errorMessage}>{errorProductType}</p>
 				</div>

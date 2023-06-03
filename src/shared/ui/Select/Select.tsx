@@ -20,10 +20,11 @@ type SelectProps = {
 	value: string
 	placeholder: string
 	error?: boolean
+	clearError?: (value: string) => void
 }
 
 export const Select = memo((props: SelectProps) => {
-	const { className, disable, options, onSelect, value, placeholder, error } = props
+	const { className, disable, options, onSelect, value, placeholder, error, clearError } = props
 
 	const [openOptions, setOpenOptions] = useState(false)
 
@@ -32,6 +33,7 @@ export const Select = memo((props: SelectProps) => {
 	const selectValue = (value: string) => {
 		onSelect(value)
 		setOpenOptions(false)
+		clearError?.('')
 	}
 
 	useEffect(() => {
