@@ -5,9 +5,17 @@ import { Input } from 'shared/ui/Input'
 import { Select } from 'shared/ui/Select'
 import { Checkbox } from 'shared/ui/Checkbox'
 import { Button } from 'shared/ui/Button'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { submitFormData } from '../../model/services/submitFormData/submitFormData'
+import {
+	validateEmail,
+	validateFirstName,
+	validateLastName,
+	validateProductType
+} from '../../model/services/validateFormData/validateFormData'
 import type { Option } from 'shared/ui/Select'
+
 
 const products: Option[] = [
 	{
@@ -27,6 +35,7 @@ const products: Option[] = [
 	},
 ]
 
+
 type FormProps = {
 	className?: string
 	onClose: () => void
@@ -38,18 +47,24 @@ export const Form = (props: FormProps) => {
 	const dispatch = useAppDispatch()
 
 	const [firstName, setFirstName] = useState('')
-	const [lasttName, setLasttName] = useState('')
+	const [lastName, setLastName] = useState('')
 	const [email, setEmail] = useState('')
-	const [comment, setComment] = useState('')
 	const [productType, setProductType] = useState('')
 	const [featureOne, setFeatureOne] = useState(false)
 	const [featureTwo, setFeatureTwo] = useState(false)
+	const [comment, setComment] = useState('')
+
+	const [errorFirstName, setErrorFirstName] = useState('')
+	const [errorLastName, setErrorLastName] = useState('')
+	const [errorEmail, setErrorEmail] = useState('')
+	const [errorProductType, setErrorProductType] = useState('')
+
 	const [totalPrice, setTotalPrice] = useState(0)
+
 
 	const toggleFeatureOne = useCallback(() =>{
 		setFeatureOne(prev => !prev)
 	},[])
-
 	const toggleFeatureTwo = useCallback(() =>{
 		setFeatureTwo(prev => !prev)
 	},[])
@@ -65,6 +80,32 @@ export const Form = (props: FormProps) => {
 		calcTotalPrice()
 	},[calcTotalPrice, featureOne, featureTwo, productType])
 
+
+	const submitForm = useCallback(() => {
+		const firstNameError = validateFirstName(firstName)
+		const lastNameError = validateLastName(lastName)
+		const emailError = validateEmail(email)
+		const productTypeError = validateProductType(productType)
+
+		if(firstNameError || lastNameError || emailError || productTypeError) {
+			setErrorFirstName(firstNameError)
+			setErrorLastName(lastNameError)
+			setErrorEmail(emailError)
+			setErrorProductType(productTypeError)
+			return
+		}
+
+		dispatch(submitFormData({
+			firstName,
+			lastName,
+			email,
+			productType,
+			featureOne,
+			featureTwo,
+			comment,
+		}))
+	},[comment, dispatch, email, featureOne, featureTwo, firstName, lastName, productType])
+
 	return (
 		<div className={classNames(cls.Form, {}, [className])}>
 			<h1 className={cls.title}>Title form</h1>
@@ -73,29 +114,43 @@ export const Form = (props: FormProps) => {
 				placeholder="First Name *"
 				value={firstName}
 				onChange={setFirstName}
+				error={!!errorFirstName}
 			/>
+			<p className={cls.errorMessage}>{errorFirstName}</p>
+
 			<Input
 				className={cls.input}
 				placeholder="Last Name *"
-				value={lasttName}
-				onChange={setLasttName}
+				value={lastName}
+				onChange={setLastName}
+				error={!!errorLastName}
 			/>
+			<p className={cls.errorMessage}>{errorLastName}</p>
+
 			<Input
 				className={cls.input}
 				placeholder="user@gmail.com *"
 				value={email}
 				onChange={setEmail}
+				error={!!errorEmail}
 			/>
+			<p className={cls.errorMessage}>{errorEmail}</p>
+
 			<div className={cls.productType}>
 				<p className={cls.productType__text}>Product type *</p>
-				<Select
-					className={cls.productType__select}
-					options={products}
-					onSelect={setProductType}
-					value={productType}
-					placeholder='Select product type'
-				/>
+				<div className={cls.productType__selectBlock}>
+					<Select
+						className={cls.productType__select}
+						options={products}
+						onSelect={setProductType}
+						value={productType}
+						placeholder='Select product type'
+						error={!!errorProductType}
+					/>
+					<p className={cls.errorMessage}>{errorProductType}</p>
+				</div>
 			</div>
+
 			<div className={cls.additionalFeatures}>
 				<div className={cls.feature}>
 					<p className={cls.feature__text}>Additional feature for $100</p>
@@ -126,7 +181,7 @@ export const Form = (props: FormProps) => {
 			</div>
 
 			<div className={cls.submit}>
-				<Button className={cls.submit__btn}>Send form</Button>
+				<Button className={cls.submit__btn} onClick={submitForm}>Send form</Button>
 			</div>
 
 			<div className={cls.closeModal}>

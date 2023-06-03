@@ -1,0 +1,38 @@
+:root {
+	--app-background: var(--col-white);
+	--overlay-color: var(--col-medium-gray);
+
+	--text-primary: var(--col-black);
+	--text-secondary: var(--col-dark-gray);
+	--text-attn: var(--col-light-red);
+
+	--border: var(--col-silver);
+	--active-border: var(--col-cyan);
+
+	--icon-primary: var(--col-light-gray);
+
+	--input-background: var(--col-white);
+	--input-attn-background: var(--col-light-pink);
+	--input-attn-border: var(--col-red);
+	--input-placeholder: var(--col-gray);
+	--input-attn-placeholder: var(--col-red);
+	--input-text: var(--col-light-black)
+
+	--select-background: var(--col-white);
+	--select-options-background: var(--col-white);
+	--select-hover-options-background: var(--col-light-cyan);
+	--select-icon: var(--col-silver);
+	--select-text: var(--col-dark-gray);
+
+	--button-background: var(--col-blue);
+	--button-text: var(--col-white);
+
+	--checkbox-background: var(--col-pink);
+	--checkbox-checked-background: var(--col-green);
+	--checkbox-slider: var(--col-gradient-pink);
+
+	--form-background: var(--col-white);
+
+	--scroll-thumb: var(--col-transparent-white);
+	--scroll-track: var(--col-blue-black);
+}

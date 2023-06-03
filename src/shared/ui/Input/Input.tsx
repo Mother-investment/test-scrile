@@ -7,7 +7,7 @@ type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onC
 
 type Type = 'input' | 'textarea'
 
-type InputProps = {
+type InputProps = HTMLInputProps & {
 	className?: string
 	type?: Type
 	value: string
@@ -16,7 +16,7 @@ type InputProps = {
 	disable?: boolean
 	placeholder?: string
 	error?: boolean
-} & HTMLInputProps
+}
 
 export const Input = memo((props: InputProps) => {
 	const { className, type = 'input',value, onChange, onClick, disable, placeholder, error, ...otherProps } = props

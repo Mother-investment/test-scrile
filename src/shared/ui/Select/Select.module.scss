@@ -1,14 +1,14 @@
 .Select {
 	position: relative;
 	background-color: var(--select-background);
-	border: 2px solid var(--border);
+	border: 1px solid var(--border);
 	border-radius: var(--r-input);
 	color: var(--select-text);
 	font-size: var(--fs-select);
 }
 
 .selectOpened {
-	border: 2px solid var(--active-border);
+	border: 1px solid var(--active-border);
 }
 
 .control {
@@ -60,4 +60,14 @@
 	padding: 20px 14px 6px 14px;
 	width: 100%;
 	outline: none;
+}
+
+
+.error {
+	background-color: var(--input-attn-background);
+	border-color: var(--input-attn-border);
+
+	.placeholder {
+		color: var(--input-attn-placeholder);
+	}
 }

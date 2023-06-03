@@ -11,7 +11,7 @@ interface FormModalProps {
 
 export const FormModal = ({ className, isOpen, onClose }: FormModalProps) => (
 	<Modal className={classNames('', {}, [className])} isOpen={isOpen} onClose={onClose}>
-		<Suspense fallback={'TODO'}>
+		<Suspense fallback={'Загрузка...'}>
 			<Form onClose={onClose} />
 		</Suspense>
 	</Modal>

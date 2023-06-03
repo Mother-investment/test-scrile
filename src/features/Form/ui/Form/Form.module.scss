@@ -11,6 +11,12 @@
 	margin-top: 12px;
 }
 
+.errorMessage {
+	margin-top: 5px;
+	font-size: var(--fs-text-attn);
+	color: var(--text-attn);
+}
+
 .productType {
 	margin-top: 12px;
 	display: flex;
@@ -56,4 +62,16 @@
 	position: absolute;
 	top: 12px;
 	right: 12px;
+}
+
+@media (max-width: 580px) {
+	.Form {
+		width: 100vw;
+	}
+}
+
+@media (max-width: 440px) {
+	.productType__select {
+		width: 100%;
+	}
 }

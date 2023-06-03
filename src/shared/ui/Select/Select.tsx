@@ -1,8 +1,9 @@
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './Select.module.scss'
 import ArrowIcon from 'shared/assets/icons/arrowIcon.svg'
-import { memo, useState } from 'react'
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
+import { memo, useEffect, useRef, useState } from 'react'
+import type { Mods } from 'shared/lib/classNames/classNames'
+import type { MutableRefObject } from 'react'
 
 export type Option = {
 	value: string
@@ -18,22 +19,43 @@ type SelectProps = {
 	onSelect: (value: string) => void
 	value: string
 	placeholder: string
+	error?: boolean
 }
 
 export const Select = memo((props: SelectProps) => {
-	const { className, disable, options, onSelect, value, placeholder } = props
+	const { className, disable, options, onSelect, value, placeholder, error } = props
 
 	const [openOptions, setOpenOptions] = useState(false)
+
+	const selectRef = useRef() as MutableRefObject<HTMLDivElement>
 
 	const selectValue = (value: string) => {
 		onSelect(value)
 		setOpenOptions(false)
 	}
 
+	useEffect(() => {
+		const handler = ({ target }: MouseEvent) => {
+			if(selectRef.current && !selectRef.current?.contains(target as Node)) {
+				setOpenOptions(false)
+			}
+		}
+
+		document.addEventListener('mouseup', handler)
+		return () => {
+			document.removeEventListener('mouseup', handler)
+		}
+	}, [])
+
+	const mods: Mods = {
+		[cls.selectOpened]: openOptions,
+		[cls.error]: error
+	}
+
 	return (
-		<div className={classNames(cls.Select, { [cls.selectOpened]: openOptions }, [className])}>
+		<div className={classNames(cls.Select, mods, [className])} ref={selectRef}>
 			<div className={cls.control} onClick={() => !disable && setOpenOptions(prev => !prev)}>
-				<span>{value ? options.find(item => item.value === value)?.label : placeholder}</span>
+				<span className={cls.placeholder}>{value ? options.find(item => item.value === value)?.label : placeholder}</span>
 				<div className={cls.arrowContainer}>
 					<ArrowIcon className={classNames(cls.arrow, { [cls.arrowActive]: openOptions }, [])}/>
 				</div>

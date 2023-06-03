@@ -1,38 +1,28 @@
 :root {
-	--app-background: #ffffff;
-	--overlay-color: #808080;
+	--col-black: #000000;
+	--col-light-black: #121212;
+	--col-blue-black: #111b21;
+	--col-white: #ffffff;
 
-	--text-primary: #000000;
-	--text-secondary: #616161;
-	--text-attn: #f67389;
+	--col-green: #00a131;
 
-	--border: #c4c4c4;
-	--active-border: #b1d4f1;
+	--col-dark-gray: #616161;
+	--col-gray: #737373;
+	--col-medium-gray: #808080;
+	--col-light-gray: #828282;
+	--col-silver: #c4c4c4;
 
-	--icon-primary: #828282;
+	--col-pink: #cebcbd;
+	--col-light-pink: #fde9ec;
 
-	--input-background: #ffffff;
-	--input-attn-background: #fde9ec;
-	--input-attn-border: #eb4b64;
-	--input-placeholder: #737373;
-	--input-attn-placeholder: #eb4b64;
-	--input-text: #121212;
+	--col-red: #eb4b64;
+	--col-light-red: #f67389;
 
-	--select-background: #ffffff;
-	--select-options-background: #ffffff;
-	--select-hover-options-background: #ebfdff;
-	--select-icon: #c4c4c4;
-	--select-text: #616161;
+	--col-blue: #448ae0;
+	--col-cyan: #b1d4f1;
+	--col-light-cyan: #ebfdff;
 
-	--button-background: #448ae0;
-	--button-text: #ffffff;
+	--col-transparent-white: #ffffff16;
 
-	--checkbox-background: #cebcbd;
-	--checkbox-checked-background: #00a131;
-	--checkbox-slider: linear-gradient(#f3e9ea, #c5b3b4);
-
-	--form-background: #ffffff;
-
-	--scroll-thumb: #ffffff16;
-	--scroll-track: #111b21;
+	--col-gradient-pink: linear-gradient(#f3e9ea, #c5b3b4);
 }

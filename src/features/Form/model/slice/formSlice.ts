@@ -3,13 +3,6 @@ import { FormSchema } from '../types/formSchema'
 import { submitFormData } from '../services/submitFormData/submitFormData'
 
 const initialState: FormSchema = {
-	firstName: '',
-	lastName: '',
-	email: '',
-	productType: undefined,
-	featureOne: undefined,
-	featureTwo: undefined,
-	comment: '',
 	status: 'init',
 	errorMessage: undefined
 }
@@ -17,29 +10,7 @@ const initialState: FormSchema = {
 export const formSlice = createSlice({
 	name: 'form',
 	initialState,
-	reducers: {
-		setFirstName: (state, action: PayloadAction<string>) => {
-			state.firstName = action.payload
-		},
-		setLastName: (state, action: PayloadAction<string>) => {
-			state.lastName = action.payload
-		},
-		setEmail: (state, action: PayloadAction<string>) => {
-			state.email = action.payload
-		},
-		setProductType: (state, action: PayloadAction<object>) => {
-			state.productType = action.payload
-		},
-		setFeatureOne: (state, action: PayloadAction<object>) => {
-			state.featureOne = action.payload
-		},
-		setFeatureTwo: (state, action: PayloadAction<object>) => {
-			state.featureTwo = action.payload
-		},
-		setComment: (state, action: PayloadAction<string>) => {
-			state.comment = action.payload
-		},
-	},
+	reducers: {},
 	extraReducers: (builder) => {
 		builder
 			.addCase(submitFormData.pending, (state) => {

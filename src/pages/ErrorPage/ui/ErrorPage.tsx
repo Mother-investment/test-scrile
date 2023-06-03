@@ -10,7 +10,7 @@ export const ErrorPage = ({ className }: ErrorPageProps) => {
 	const reloadPage = () => {
 		location.reload()
 	}
-	//TODO button
+
 	return (
 		<div className={classNames(cls.ErrorPage, {}, [className])}>
 			<h1>Произошла непредвиденная ошибка</h1>

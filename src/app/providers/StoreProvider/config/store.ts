@@ -4,26 +4,25 @@ import type { ReducersMapObject } from '@reduxjs/toolkit'
 import type { StateSchema, ThunkExtraArg } from './StateSchema'
 import { formReducer } from 'features/Form'
 
-export function createReduxStore(
-	initialState?: StateSchema
-) {
+export function createReduxStore(initialState?: StateSchema) {
 	const rootReducers: ReducersMapObject<StateSchema> = {
-		form: formReducer
+		form: formReducer,
 	}
 
 	const extraArg: ThunkExtraArg = {
-		api: $api
+		api: $api,
 	}
 
 	const store = configureStore({
 		reducer: rootReducers,
 		devTools: __IS_DEV__,
 		preloadedState: initialState,
-		middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-			thunk: {
-				extraArgument: extraArg
-			}
-		})
+		middleware: (getDefaultMiddleware) =>
+			getDefaultMiddleware({
+				thunk: {
+					extraArgument: extraArg,
+				},
+			}),
 	})
 
 	return store
