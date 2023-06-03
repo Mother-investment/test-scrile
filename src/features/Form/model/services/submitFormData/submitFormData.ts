@@ -9,8 +9,7 @@ export const submitFormData = createAsyncThunk<object, SubmitFormData, ThunkConf
 		const { rejectWithValue, extra } = thunkAPI
 
 		try {
-			const response = await extra.api.post<object>('/form', formData)
-
+			const response = await extra.api.post<object>('/order', formData)
 			if (!response.data) {
 				throw new Error('Что-то пошло не так :(')
 			}

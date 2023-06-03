@@ -104,7 +104,8 @@ export const Form = (props: FormProps) => {
 			featureTwo,
 			comment,
 		}))
-	},[comment, dispatch, email, featureOne, featureTwo, firstName, lastName, productType])
+		onClose()
+	},[comment, dispatch, email, featureOne, featureTwo, firstName, lastName, onClose, productType])
 
 	return (
 		<div className={classNames(cls.Form, {}, [className])}>

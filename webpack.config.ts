@@ -13,7 +13,7 @@ export default (env: BuildEnv): Configuration => {
 
 	const mode = env.mode || 'development'
 	const PORT = env.port || 3000
-	const apiUrl = 'https://api.green-api.com/'
+	const apiUrl = 'http://localhost:8080'
 
 	const isDev = mode === 'development'
 
